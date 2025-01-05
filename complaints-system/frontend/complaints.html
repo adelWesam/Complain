@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Submit a Complaint</title>
+  <link rel="stylesheet" href="./css/style.css">
+</head>
+<body>
+  <div class="container">
+    <header class="header">
+      <h1>Complaint Submission</h1>
+      <p>Your voice matters. Submit your complaint anonymously.</p>
+      
+      <!-- Language Dropdown -->
+      <div class="language-dropdown">
+        <label for="language">Choose Language:</label>
+        <select id="language" onchange="changeLanguage()">
+          <option value="en">English</option>
+          <option value="ar">Arabic</option>
+          <option value="bn">Bengali</option>
+          <option value="hi">Hindi</option>
+        </select>
+      </div>
+    </header>
+
+    <main>
+      <form id="complaintForm" class="form">
+        <textarea id="complaint" class="textarea" placeholder="Write your complaint here..." required></textarea>
+        <button type="submit" class="submit-btn">Submit</button>
+      </form>
+    </main>
+
+    <footer class="footer">
+      <p>&copy; 2025 Your Company. All rights reserved.</p>
+    </footer>
+  </div>
+
+  <script src="./js/lang.js"></script>
+  <script src="./js/script.js"></script>
+</body>
+</html>
