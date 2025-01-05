@@ -17,7 +17,10 @@ body {
   align-items: center;
   min-height: 100vh;
   margin: 0;
+
 }
+
+
 
 /* Container Styling */
 .container {
@@ -36,6 +39,13 @@ body {
   color: #fff;
   padding: 20px;
   border-bottom: 2px solid #6C63FF;
+}
+
+/* Logo Styling */
+.logo {
+  width: 100px;  /* Set the width of the logo */
+  height: auto;  /* Maintain the aspect ratio */
+  margin-bottom: 20px;  /* Add some space between the logo and the heading */
 }
 
 .header h1 {
