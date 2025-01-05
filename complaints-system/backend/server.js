@@ -3,22 +3,22 @@ const nodemailer = require('nodemailer');
 const cors = require('cors');
 const path = require('path');
 const app = express();
-const PORT = 3000;
+const PORT = process.env.PORT || 3000;
 
 app.use(cors());
 app.use(express.json());
 
-// Serve the frontend (if you have one)
-app.use(express.static(path.join(__dirname, 'public')));
+// Serve static files (CSS, JS, etc.) from the frontend folder
+app.use(express.static(path.join(__dirname, '../frontend')));
 
-// Root route
+// Serve the complaints.html file from the frontend when accessing the root
 app.get('/', (req, res) => {
-  res.sendFile(path.join(__dirname, 'public', 'index.html'));
+  res.sendFile(path.join(__dirname, '../frontend', 'complaints.html'));
 });
 
 app.post('/submit', async (req, res) => {
   const { complaint, email } = req.body;
-  
+
   let transporter = nodemailer.createTransport({
     service: 'gmail',
     auth: {
@@ -43,6 +43,11 @@ app.post('/submit', async (req, res) => {
     console.error(error);
     return res.status(500).send({ error: 'Failed to send email.' });
   }
+});
+
+// Catch-all for any unmatched routes
+app.use((req, res) => {
+  res.status(404).send('Page not found');
 });
 
 app.listen(PORT, () => {
