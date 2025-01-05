@@ -3,7 +3,7 @@ document.getElementById("complaintForm").addEventListener("submit", async (event
     const complaintText = document.getElementById("complaint").value;
     const email = "recipient-email@example.com";  // Hardcoded recipient for backend
     try {
-      const response = await fetch("http://localhost:3000/submit", {
+      const response = await fetch("https://complain-new.onrender.com/submit", {
         method: "POST",
         headers: {
           "Content-Type": "application/json",
