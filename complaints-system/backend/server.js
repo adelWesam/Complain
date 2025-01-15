@@ -30,7 +30,7 @@ app.post('/submit', async (req, res) => {
   try {
     let info = await transporter.sendMail({
       from: 'elzaycomplaints@gmail.com',
-      to: "akram.markhieh@elzay.com , sonoqrut.adel@gmail.com",
+      to: "akram.markhieh@elzay.com , sonoqrut.adel@gmail.com, ralattar@elzay.com",
       subject: 'New Complaint Submitted',
       text: complaint,
     });
