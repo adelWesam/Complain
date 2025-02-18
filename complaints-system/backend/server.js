@@ -19,11 +19,16 @@ app.get('/', (req, res) => {
 app.post('/submit', async (req, res) => {
   const { complaint, email } = req.body;
 
+  // Validate the request body
+  if (!complaint || !email) {
+    return res.status(400).send({ error: 'Complaint and email are required.' });
+  }
+
   let transporter = nodemailer.createTransport({
     service: 'gmail',
     auth: {
       user: 'elzaycomplaints@gmail.com',
-      pass: 'wtvv dtcz iyjt kaum',
+      pass: "zlia ibnd wfaz ndcn",
     },
   });
 
@@ -37,14 +42,14 @@ app.post('/submit', async (req, res) => {
 
     if (info.accepted.length > 0) {
       return res.status(200).send({ message: 'Complaint submitted successfully!' });
+    } else {
+      return res.status(500).send({ error: 'Failed to send email.' });
     }
-    return res.status(500).send({ error: 'Failed to send email.' });
   } catch (error) {
-    console.error(error);
-    return res.status(500).send({ error: 'Failed to send email.' });
+    console.error('Error sending email:', error);
+    return res.status(500).send({ error: 'Failed to send email.', details: error.message });
   }
 });
-
 // Catch-all for any unmatched routes
 app.use((req, res) => {
   res.status(404).send('Page not found');
